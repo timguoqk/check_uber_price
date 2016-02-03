@@ -1,0 +1,24 @@
+{
+  "name": "check_uber_price",
+  "version": "1.0.0",
+  "description": "",
+  "main": "check_uber_price.js",
+  "dependencies": {
+    "request": "^2.69.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timguoqk/check_uber_price.git"
+  },
+  "author": "Tim Guo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timguoqk/check_uber_price/issues"
+  },
+  "homepage": "https://github.com/timguoqk/check_uber_price#readme"
+}

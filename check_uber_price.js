@@ -3,7 +3,8 @@ var querystring = require('querystring');
 var request = require('request');
 var _ = require('underscore');
 
-var server_token = 'X5Svtc45OVGhABAdzM-hHaqdKFUdoe9P5KSJT-Ih'; 
+var server_token = 'INSERT_SERVER_TOKEN_HERE'; 
+assert(server_token != 'INSERT_SERVER_TOKEN_HERE', 'server_token is not set!');
 // Services that you are interested
 var targets = ['uberX'];
 
@@ -34,7 +35,7 @@ request('https://api.uber.com/v1/estimates/price?' + querystring.stringify(query
     var times = JSON.parse(body).times;
     prices.forEach(function(p) {
       var out = p.display_name;
-      out += ' Surge: X' + p.surge_multiplier;
+      out += ' Surge: x' + p.surge_multiplier;
       out += ' Price: ' + p.estimate;
       out += ' Wait time: ' + _.findWhere(times, {display_name: p.display_name}).estimate / 60 + 'min';
       console.log(out);
