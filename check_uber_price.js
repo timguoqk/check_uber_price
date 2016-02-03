@@ -27,15 +27,17 @@ var query_cost = {
 console.log(new Date());
 
 request('https://api.uber.com/v1/estimates/price?' + querystring.stringify(query_cost), function (error, response, body) {
-  var out = '';
-  _.filter(JSON.parse(body)['prices'], function(p) {
+  var prices = _.filter(JSON.parse(body).prices, function(p) {
     return _.contains(targets, p.display_name);
-  })
-    .forEach(function(p) {
-      out += p.display_name;
+  });
+  request('https://api.uber.com/v1/estimates/time?' + querystring.stringify(query_cost), function (error, response, body) {
+    var times = JSON.parse(body).times;
+    prices.forEach(function(p) {
+      var out = p.display_name;
       out += ' Surge: X' + p.surge_multiplier;
       out += ' Price: ' + p.estimate;
-      out += '\n';
+      out += ' Wait time: ' + _.findWhere(times, {display_name: p.display_name}).estimate / 60 + 'min';
+      console.log(out);
     });
-  console.log(out);
+  });
 });
