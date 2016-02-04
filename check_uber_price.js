@@ -14,7 +14,7 @@ if (process.argv.length != 6) {
   process.exit(1);
 }
 
-var query_cost = {
+var query = {
   'server_token': server_token,
   'start_latitude': process.argv[2],
   'start_longitude': process.argv[3],
